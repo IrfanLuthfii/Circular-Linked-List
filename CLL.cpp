@@ -5,8 +5,8 @@ struct node{
     int info;
     node* next;
 
-    node(int value, node* n = 0)
-    : info(value), next(n){};
+    node(int value, node* c = 0)
+    : info(value), next(c){};
 };
 
 node* first = NULL;
@@ -50,12 +50,12 @@ void insertlast(int value){
     } else {Empty(n);}
 }
 
-void insertbefore(int value , node* n){
-    if (first != n){
+void insertbefore(int value , node* c){
+    if (first != c){
         node* temp;
         node* p = first;
         
-        while(p != n){
+        while(p != c){
             temp = p;
             p = p->next;
         }
@@ -71,16 +71,16 @@ void insertbefore(int value , node* n){
     }
 }
 
-void insertafter(int value, node* n){
+void insertafter(int value, node* c){
     node* temp;
     node* p = first;
     
-    while(p != n){
+    while(p != c){
         p = p->next;
     }
     
     node* k = new node(value);
-    n->next = p->next;
+    k->next = p->next;
     p->next = k;
 }
 
@@ -111,14 +111,14 @@ void deletelast(){
     delete n;
 }
 
-void deleteafter(node* n){
+void deleteafter(node* c){
     node* p = first;
     
-    while(p != n){
+    while(p != c){
         p = p->next;
     }
     node* del = p->next;
-    n->next = p->next->next;
+    c->next = p->next->next;
     delete del;
 
 }
@@ -133,12 +133,12 @@ int search(int key){
     return i;
 }
 
-void print(node* n){
-    while(n->next != first){
-        cout << n->info << " ";
-        n = n->next;
+void print(node* c){
+    while(c->next != first){
+        cout << c->info << " ";
+        c = c->next;
     } 
-    cout << n->info << " ";
+    cout << c->info << " ";
     cout << endl;
 }
 
@@ -177,7 +177,7 @@ int main(){
     int key;
     cout << "Data yang ingin di cari: ";
     cin >> key;
-    cout << "data "<< key <<" ditemukan di urutan ke-" << search(key);
+    cout << "key "<< key <<" ditemukan di urutan ke-" << search(key);
     
     return 0;
 }
